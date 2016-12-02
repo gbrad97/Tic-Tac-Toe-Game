@@ -1,0 +1,196 @@
+
+# Create an empty array for gameboard spaces
+space = []
+
+# Use for loop to add blank spaces to the gameboard
+# For numbers between 0 and 9, a new element consisting of a space will be added to the space array
+num = 0
+for num in range(0, 9):
+  space.append(' ')
+  num = num + 1 # 1 is added to each number in order for the loop to continue up until it reaches the number 9
+
+
+# Create blank board
+def gameboard():
+  print('     |   |     ')
+  # Make spaces strings in order to place an X or O in them
+  print('  ' + space[0] + '  ' + space[1] + '   ' + space[2])
+  print('     |   |     ')
+  print('---------------')
+  print('     |   |     ')
+  print('  ' + space[3] + '  ' + space[4] + '   ' + space[5])
+  print('     |   |     ')
+  print('---------------')
+  print('     |   |     ')
+  print('  ' + space[6] + '  ' + space[7] + '   ' + space[8])
+  print('     |   |     ')
+
+
+def clear_screen():
+  print('\n' * 50)
+
+
+# Determines a winner      
+def who_won():
+  # Possible winning combos:
+    # 0, 1, 2
+    # 3, 4, 5
+    # 6, 7, 8
+    # 0, 3, 6
+    # 1, 4, 7
+    # 2, 5, 8
+    # 0, 4, 8
+    # 2, 4, 6
+    # # Call gameplay function
+    # gameplay()
+      
+    if space[0] == 'X' and space[1] == '  X' and space[2] == ' X':
+    # Change value of winner in order to end the move loop
+      winner = True
+      # Print the winner
+      print('Player 1 Wins!')
+      clear_screen()
+    if space[3] == 'X' and space[4] == '  X' and space[5] == '   X':
+      winner = True
+      print('Player 1 Wins!')
+      clear_screen()
+    if space[6] == 'X' and space[7] == '  X' and space[8] == '  X':
+      winner = True
+      print('Player 1 Wins!')
+      clear_screen()
+    if space[0] == 'X' and space[3] == 'X' and space[6] == 'X':
+      winner = True
+      print('Player 1 Wins!')
+      clear_screen()
+    if space[1] == '  X' and space[4] == '  X' and space[7] == '  X':
+      winner = True
+      print('Player 1 Wins!')
+      clear_screen()
+    if space[2] == ' X' and space[5] == '   X' and space[8] == '  X':
+      winner = True
+      print('Player 1 Wins!')
+      clear_screen()
+    if space[0] == 'X' and space[4] == '  X' and space[8] == '  X':
+      winner = True
+      print('Player 1 Wins!')
+      clear_screen()
+    if space[2] == ' X' and space[4] == '  X' and space[6] == 'X':
+      winner = True
+      print('Player 1 Wins!')
+      clear_screen()
+    if space[0] == 'O' and space[1] == '  O' and space[2] == ' O':
+      winner = True
+      # Print the winner
+      print('Player 2 Wins!')
+      clear_screen()
+    if space[3] == 'O' and space[4] == '  O' and space[5] == ' O':
+      winner = True
+      print('Player 2 Wins!')
+      clear_screen()
+    if space[6] == 'O' and space[7] == '  O' and space[8] == ' O':
+      winner = True
+      print('Player 2 Wins!')
+      clear_screen()
+    if space[0] == 'O' and space[3] == 'O' and space[6] == 'O':
+      winner = True
+      print('Player 2 Wins!')
+      clear_screen()
+    if space[1] == '  O' and space[4] == '  O' and space[7] == '  O':
+      winner = True
+      print('Player 2 Wins!')
+      clear_screen()
+    if space[2] == ' O' and space[5] == ' O' and space[8] == ' O':
+      winner = True
+      print('Player 2 Wins!')
+      clear_screen()
+    if space[0] == 'O' and space[4] == '  O' and space[8] == ' O':
+      winner = True
+      print('Player 2 Wins!')
+      clear_screen()
+    if space[2] == ' O' and space[4] == '  O' and space[6] == 'O':
+      winner = True
+      print('Player 2 Wins!')
+      clear_screen()
+    winner = True
+      
+
+
+# IMPORTANT FUNCTION--Allows the players to take turns, decide what letter they want, and decide where they want to place their letter
+def gameplay():
+  # Use boolean values and a loop to get players to take turns
+  player_1 = True
+  winner = False
+  
+  while not winner:
+    gameboard()
+    
+    if player_1:
+      print('Player 1\'s Turn')
+      # Asks player for their coordinates then places their letter in the space
+      player_x = int(input('Player: Enter an x-coordinate:'))
+      player_y = int(input('Player: Enter a y-coordinate:'))
+      if player_x == 1 and player_y == 1:
+        space[0] = 'X'
+      if player_x == 1 and player_y == 2:
+        space[1] = '  X'
+      if player_x == 1 and player_y == 3:
+        space[2] = ' X'
+      if player_x == 2 and player_y == 1:
+        space[3] = 'X'
+      if player_x == 2 and player_y == 2:
+        space[4] = '  X'
+      if player_x == 2 and player_y == 3:
+        space[5] = '   X'
+      if player_x == 3 and player_y == 1:
+        space[6] = 'X'
+      if player_x == 3 and player_y == 2:
+        space[7] = '  X'
+      if player_x == 3 and player_y == 3:
+        space[8] = '  X'
+      # else:
+      #   # Prints error message for an invalid move
+      #   print('This is not a valid move.')
+      #   # Allows user to try again
+      #   player_1 = not player_1
+      
+    else:
+      print('Player 2\'s Turn')
+      player_x = int(input('Player: Enter an x-coordinate:'))
+      player_y = int(input('Player: Enter a y-coordinate:'))
+      if player_x == 1 and player_y == 1:
+        space[0] = 'O'
+      if player_x == 1 and player_y == 2:
+        space[1] = '  O'
+      if player_x == 1 and player_y == 3:
+        space[2] = ' O'
+      if player_x == 2 and player_y == 1:
+        space[3] = 'O'
+      if player_x == 2 and player_y == 2:
+        space[4] = '  O'
+      if player_x == 2 and player_y == 3:
+        space[5] = ' O'
+      if player_x == 3 and player_y == 1:
+        space[6] = 'O'
+      if player_x == 3 and player_y == 2:
+        space[7] = '  O'
+      if player_x == 3 and player_y == 3:
+        space[8] = ' O'
+      # else:
+      #   print('This is not a valid move.')
+      #   player_1 = not player_1
+      
+    who_won()
+       
+    # Allows turns to alternate
+    player_1 = not player_1
+    
+
+
+
+  
+# Call the gameplay() function
+gameplay()
+
+
+      
+    
